@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Tic Tac Toe</title>
+        <meta http-equiv="content-type" content="text/html； charset=utf-8" />
+        <!--meta name="viewport" content="width=device-width, inital-scale=1, maximum-scale=1"-->
+        <!--link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'-->
+        <link href="style.css" rel="stylesheet" type="text/css" media="all">
+        <script href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script href="script.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <!-- header sections -->
+            <div class="header">
+                <h1>Tic Tac Toe</h1>
+            </div>
+            <!-- controls sections: checkboxes -->
+            <div class="controls">
+                <h3>You're playing against the computer. Choose X or O</h3>
+                <form action="#">
+                    <input class="checkBox" type="checkbox" name="xPlayer" value="X">X Player
+                    <input class="checkBox" type="checkbox" name="oPlayer" value="O">O Player      
+                </form>
+            </div>
+            <!-- board container -->
+            <div class="boardContainer">
+                <!-- first row -->
+                <div class="row">
+                    <div id="0" class="square bottom right"></div>
+                    <div id="1" class="square bottom right"></div>
+                    <div id="2" class="square bottom"></div>   
+                </div>
+    
+                <!-- second row -->
+                <div class="row">
+                    <div id="3" class="square bottom right"></div>
+                    <div id="4" class="square bottom right"></div>
+                    <div id="5" class="square bottom"></div>   
+                </div>
+    
+                <!-- third row -->
+                <div class="row">
+                    <div id="6" class="square right"></div>
+                    <div id="7" class="square right"></div>
+                    <div id="8" class="square"></div>   
+                </div>  
+            </div>
+        </div>
+    </body>
+</html>

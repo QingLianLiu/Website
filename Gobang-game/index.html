@@ -1,0 +1,254 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Gobang</title>
+		<style>
+			body {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			canvas {
+				background-color: #ddd;
+				display: block;
+			}
+			.tools {
+				display: flex;
+				justify-content: center;
+			}
+			.tools > button {
+				margin: 0 1rem;
+				border: none;
+				background-color: #eee;
+				padding: .5rem 1rem;
+				font-size: 1rem;
+				cursor: pointer;
+			}
+			.tools > button:hover {
+				background-color: #aaa;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="app">
+			<canvas id="game" width="600px" height="600px"></canvas>
+			<br>	
+			<div class="tools">
+				<button onclick="gobangGame.resetAndInit()">Start/Reset</button>
+				<button onclick="gobangGame.regretChess()">Regret</button>
+				<button onclick="gobangGame.revokedRegretChess()">Revoke Regret</button>
+			</div>
+		</div>
+	</body>
+	<script>
+		console.log('haha!')
+		// Gobang
+		class Gobang {
+			constructor(options) {
+				this.options = options
+				this.resetAndInit()
+			}
+			// Init
+			resetAndInit() {
+				const { options } = this
+				// role => 1 Black 2 white
+				this.role = options.role || this.role || 1
+				// bool win or not
+				this.win = false
+				// history
+				this.history = []
+				// current step
+				this.currentStep = 0
+				// init gobang
+				this.gobang = null
+				this.gobang = document.getElementById(options.canvas || 'gobang')
+				this.context = this.gobang.getContext('2d')
+				this.context.strokeStyle = '#aaa'
+				this.context.lineWidth = 1
+				// clear
+				this.gobang.onclick = null
+				this.context.fillStyle = '#ddd'
+				this.context.beginPath()
+				this.context.fillRect(0, 0, this.gobang.clientWidth, this.gobang.clientHeight)
+				this.context.closePath()
+				// gobang style
+				this.gobangStyle = Object.assign({
+					padding: 30,
+					count: 15
+				}, options.gobangStyle || {})
+				// gobang element
+				this.lattice = {
+					width: (this.gobang.clientWidth - this.gobangStyle.padding * 2) / this.gobangStyle.count,
+					height: (this.gobang.clientHeight - this.gobangStyle.padding * 2) / this.gobangStyle.count
+				}
+				// init
+				this.drawChessboard()
+				this.listenDownChessman()
+				this.initChessboardMatrix()
+			}
+			// gobang matrix
+			initChessboardMatrix() {
+				const checkerboard = []
+				for (let x = 0; x < this.gobangStyle.count + 1; x++) {
+					checkerboard[x] = []
+					for (let y = 0; y < this.gobangStyle.count + 1; y++) {
+						checkerboard[x][y] = 0
+					}
+				}
+				this.checkerboard = checkerboard
+			}
+			// draw chess board
+			drawChessboard() {
+				const { gobangStyle, context, lattice, gobang } = this
+				for (let i = 0; i <= gobangStyle.count; i++) {
+					context.moveTo(gobangStyle.padding + i * lattice.width, gobangStyle.padding)
+					context.lineTo(gobangStyle.padding + i * lattice.width, gobang.clientWidth - gobangStyle.padding)
+					context.stroke()
+					context.moveTo(gobangStyle.padding, gobangStyle.padding + i * lattice.height)
+					context.lineTo(gobang.clientHeight - gobangStyle.padding, gobangStyle.padding + i * lattice.height)
+					context.stroke()
+				}
+				// fill style
+				context.fillStyle = '#000'
+				;[{
+					x: gobang.clientWidth / 2,
+					y: gobang.clientHeight / 2
+				}, {
+					x: gobangStyle.padding + 4 * lattice.width, 
+					y: gobangStyle.padding + 4 * lattice.height
+				}, {
+					x: gobangStyle.padding + (gobangStyle.count - 4) * lattice.width,
+					y: gobangStyle.padding + 4 * lattice.height
+				}, {
+					x: gobangStyle.padding + 4 * lattice.width, 
+					y: gobangStyle.padding + (gobangStyle.count - 4) * lattice.height
+				}, {
+					x: gobangStyle.padding + (gobangStyle.count - 4) * lattice.width,
+					y: gobangStyle.padding + (gobangStyle.count - 4) * lattice.height
+				}].forEach(sign => {
+					context.beginPath()
+					context.arc(sign.x, sign.y, lattice.width * 0.1, 0, 2 * Math.PI)
+					context.closePath()
+					context.fill()
+				})
+			}
+			
+			// draw chessman
+			drawChessman(x, y, isBlack) {
+				const { gobangStyle, context, lattice, gobang } = this
+				context.fillStyle = isBlack ? '#000' : '#fff'
+				context.beginPath()
+				context.arc(
+					gobangStyle.padding + x * lattice.width, 
+					gobangStyle.padding + y * lattice.height,
+					lattice.width * 0.4, 0, 2 * Math.PI
+				)
+				context.closePath()
+				context.fill()
+				// check
+				setTimeout(() => {
+					this.checkReferee(x, y, isBlack ? 1 : 2)
+				}, 0)
+			}
+			// start
+			listenDownChessman(isBlack = false) {
+				this.gobang.onclick = event => {
+					let { offsetX: x, offsetY: y } = event
+					x = Math.floor((x - this.gobangStyle.padding / 2) / this.lattice.width)
+					y = Math.floor((y - this.gobangStyle.padding / 2) / this.lattice.height)
+					// empty check
+					const effectiveBoard = !!this.checkerboard[x]
+					if (effectiveBoard && 
+							this.checkerboard[x][y] !== undefined && 
+							Object.is(this.checkerboard[x][y], 0)) {
+						// record
+						this.checkerboard[x][y] = this.role
+						this.drawChessman(x, y, Object.is(this.role, 1))
+						// remember history
+						this.history.length = this.currentStep
+						this.history.push({ 
+							x, y, 
+							role: this.role, 
+							snap: this.context.getImageData(0, 0, this.gobang.clientWidth, this.gobang.clientHeight)
+						})
+						// save
+						this.currentStep++
+						this.role = Object.is(this.role, 1) ? 2 : 1
+					}
+				}
+			}
+			// check win
+			checkReferee(x, y, role) {
+				if ((x == undefined) || (y == undefined) || (role == undefined)) return
+				// count data
+				let countContinuous = 0
+				// all data
+				const XContinuous = this.checkerboard.map(x => x[y])
+				const YContinuous = this.checkerboard[x]
+				const S1Continuous = []
+				const S2Continuous = []
+				this.checkerboard.forEach((_y, i) => {
+					
+					// left
+					const S1Item = _y[y - (x - i)]
+					if (S1Item !== undefined) {
+						S1Continuous.push(S1Item)
+					}
+					// right
+					const S2Item = _y[y + (x - i)]
+					if (S2Item !== undefined) {
+						S2Continuous.push(S2Item)
+					}
+				})
+				// win when 5 connect in x/y/slip
+				;[XContinuous, YContinuous, S1Continuous, S2Continuous].forEach(axis => {
+					if (axis.some((x, i) => axis[i] !== 0 &&
+																	axis[i-2] === axis[i-1] &&
+																	axis[i-1] === axis[i] && 
+																	axis[i] === axis[i+1] && 
+																	axis[i+1] === axis[i+2])) {
+						countContinuous ++
+					}
+				})
+				// if win
+				if (countContinuous) {
+					this.gobang.onclick = null
+					this.win = true
+					alert((role == 1 ? 'Black' : 'White') + 'win,' + countContinuous + 'killed!')
+				}
+			}
+			// regret
+			regretChess() {
+				// last regord 
+				if (this.history.length && !this.win) {
+					const prev = this.history[this.currentStep - 2]
+					const _prev = this.history[this.currentStep - 1]
+					// update
+					if (prev && prev.snap) {
+						this.context.putImageData(prev.snap, 0, 0)
+						this.checkerboard[_prev.x][_prev.y] = 0
+						this.currentStep--
+					}
+				}
+			}
+			// revoked regret chess
+			revokedRegretChess() {
+				const next = this.history[this.currentStep]
+				if (next && next.snap) {
+					this.context.putImageData(next.snap, 0, 0)
+					this.checkerboard[next.x][next.y] = next.role
+					this.currentStep++
+				}
+			}
+		}
+		const gobangGame = new Gobang({
+			role: 2,
+			canvas: 'game',
+			gobangStyle: {
+				padding: 30,
+				count: 16
+			}
+		})
+		console.log(gobangGame)
+	</script>
+</html>

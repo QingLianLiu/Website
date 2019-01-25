@@ -1,0 +1,373 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Home</title>
+        <meta http-equiv="content-type" content="text/html； charset=utf-8" />
+        <meta name="viewport" content="width=device-width, inital-scale=1, maximum-scale=1">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+        <link href="css/style.css" rel="stylesheet" type="text/css" media="all">
+        <link href="css/slimmenu.css" rel="stylesheet" media="screen">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <script href="js/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="content" id="home">
+            <div class="wrap">
+                <div class="header_style1">
+                    <!-- start h_logo -->
+                    <div class="logo">
+                        <h3><a href="index.html">Welcome To Alice's Website</a></h3>
+                    </div>
+                    <!-- start h_menu -->
+                    <div class="h_menu">
+                        <ul class="flexy-menu thick orange">
+                            <li><a href="#home" class="scroll">Home</a></li>
+                            <li><a href="#Experience" class="scroll">Resume</a></li>
+                            <li><a href="#skills" class="scroll">Skills</a></li>
+                            <li><a href="#gallery" class="scroll">Hobbies</a></li>
+                        </ul>
+                    </div>
+                    <!-- End h_menu -->
+                    <div class="clear"> </div>
+                </div>
+                <!--------- menu script --------->
+                <!-- start menu -->
+                <script type="text/javascript" src="js/flexy-menu.js"></script>
+                <link href="css/header_style1.css" rel="stylesheet" type="text/css" media="all">
+                <script type="text/javascript">
+                    $(document).ready(function(){
+                        $(".flexy-menu").flexymenu({
+                            speed: 400, type: "horizibtal", align: "right"
+                        });
+                    });
+                </script>
+                <!---------- end script menu ---------->
+                <div class="slider">
+                    <!-- start da-slide -->
+                    <div id="da-slider" class="da-slider">
+                        <div class="da-slide">
+                            <h2>Traveler & Cook Lover</h2>
+                            <p>Enjoy trip and make Food</p>
+                        </div>    
+                        <div class="da-slide">
+                            <h2>Designer & Developer</h2>
+                            <p>Create beautiful and meaningful applications</p>
+                        </div>
+                        <div class="da-slide">
+                            <h2>Programmer & Engineer</h2>
+                            <p>Build clean code and estab smart solution</p>
+                        </div>
+                        <nav class="da-arrows"> 
+                            <span class="da-arrows-prev"></span> 
+                            <span class="da-arrows-next"></span> 
+                        </nav>  
+                    </div>
+                    <link rel="stylesheet" type="text/css" href="css/slider.css" />
+                    <script type="text/javascript" src="js/modernizr.custom.28468.js"></script>
+                    <script type="text/javascript" src="js/jquery.cslider.js"></script>
+                    <script type="text/javascript">
+                        $(function() {
+                            $('#da-slider').cslider({
+                                autoplay	: true,
+                                bgincrement	: 450
+                            });
+                        });
+                    </script>
+                    <!-- end da-slide --> 
+                </div>
+            </div>
+        </div>
+        <!-- start team -->
+        <div class="exper" id="Experience">
+            <div class="wrap">
+                <h3 class="heading">Resume</h3>
+                <section class="row section">
+                    <div class="row-content2">
+                        <div class="timeline-label column six">
+                            <h4>Project Experience</h4>
+                            <ol>
+                                <li style="list-style-type: none; color: #000000; font-size: 18px;">Inventory Management Project (in PHP) 
+                                    <ol style="list-style-type: lower-alpha; padding-bottom: 0;">
+                                        <li style="margin-left:2em; color: #404040; font-size: 15px;">Bootstrap page design</li>
+                                        <li style="margin-left:2em; padding-bottom: 0; color: #404040; font-size: 15px;">Validate input with regular expression and display error message</li>
+                                        <li style="margin-left:2em; padding-bottom: 0; color: #404040; font-size: 15px;">Store and retrieve data with MySQL Database</li>
+                                        <li style="margin-left:2em; padding-bottom: 0; color: #404040; font-size: 15px;">User login management using sessions</li>
+                                    </ol>
+                                </li>
+                                <li style="list-style-type: none; color: #000000; font-size: 18px;">Disaster Aid Supply Management Program (in C++)
+                                    <ol style="list-style-type: lower-alpha; padding-bottom: 0;">
+                                        <li style="margin-left:2em; color: #404040; font-size: 15px;">Implemented perishable and non-perishable product management system using object inheritance</li>
+                                        <li style="margin-left:2em; padding-bottom: 0; color: #404040; font-size: 15px;">Created console user interface allowing CRUD operations on the system</li>
+                                        <li style="margin-left:2em; padding-bottom: 0; color: #404040; font-size: 15px;">Saving and reading data using files as media</li>
+                                    </ol>
+                                </li>
+                                <li style="list-style-type: none; color: #000000; font-size: 18px;">Factory Simulator (in C++) 
+                                    <ol style="list-style-type: lower-alpha; padding-bottom: 0;">
+                                        <li style="margin-left:2em; color: #404040; font-size: 15px;">Build a parser to parse data from CSV files and generate graph for analysis</li>
+                                        <li style="margin-left:2em; padding-bottom: 0; color: #404040; font-size: 15px;">Implemented classes representing machines and tasks using CSV data</li>
+                                        <li style="margin-left:2em; padding-bottom: 0; color: #404040; font-size: 15px;">Created pipeline procedures running on numerous machines in specific sequence</li>
+                                        <li style="margin-left:2em; padding-bottom: 0; color: #404040; font-size: 15px;">Simulated Factory Running multiple pipelines (multi-threading) with error handling</li>
+                                    </ol>
+                                </li>
+                                <li style="list-style-type: none; color: #000000; font-size: 18px;">Hamilton Real Estate agency (Oracle relational database design) 
+                                    <ol style="list-style-type: lower-alpha; padding-bottom: 0;">
+                                        <li style="margin-left:2em; color: #404040; font-size: 15px;">Analyzed data relationship and created entities following Normal Forms</li>
+                                        <li style="margin-left:2em; padding-bottom: 0; color: #404040; font-size: 15px;">Enforced constraints for data validation</li>
+                                        <li style="margin-left:2em; padding-bottom: 0; color: #404040; font-size: 15px;">Created Entity-Relationship Diagram</li>
+                                        <li style="margin-left:2em; padding-bottom: 0; color: #404040; font-size: 15px;">Created views for different use cases</li>
+                                    </ol>
+                                </li>
+                            </ol>
+
+                            <h4 style="color: #988; font-size: 12px;">
+                                HTML | CSS | SQL | C++ | JavaScript | RPG | Java
+                            </h4>
+                            <!-- modifies LinkedIn pages -->
+                        </div>
+                        <!-- timeline label -->
+                        <div class="timeline colum column six last">
+                            <!--h4>Education Experience</h4-->
+                            <div class="year year1">
+                                <time datetime="2013">2019</time>
+                                <div class="experience">
+                                    <span class="circle"></span>
+                                    <div class="experience-img"><img src="image/senecacollege.jpg" alt=""></div>
+                                    <div class="experience-info clear-after">
+                                        <h5>Seneca College</h5>
+                                        <div class="role">Software Development</div>
+                                        <p>September 2017 - present, Toronto, Ontario, Canada</p>
+                                    </div>
+                                    <!-- experience information -->
+                                </div>
+                            </div>
+                            <!-- year -->
+                            <div class="year year1">
+                                <time datetime="2013">2015</time>
+                                <div class="experience">
+                                    <span class="circle"></span>
+                                    <div class="experience-img"><img src="image/senecacollege.jpg" alt=""></div>
+                                    <div class="experience-info clear-after">
+                                        <h5>Seneca College</h5>
+                                        <div class="role">Computer Programming and Analysis</div>
+                                        <p>September 2015 - April 2017, Toronto, Ontario, Canada</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"> </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <!-- Skill -->
+        <div class="skills" id="skills">
+            <section class="text-light">
+                <div class="wrap">
+                    <div class="row-content">
+                        <h3 class="heading">Skills</h3>
+                        <div class="chart" data-percent="65" data-bar-color="#66ffff" data-animate="4000">
+                            <div class="chart-content">
+                                <div class="percent"></div>
+                                <div class="chart-title">Java</div>
+                            </div>
+                            <!-- chart-content --> 
+                        </div>
+                        <!-- chart --> 
+                        <div class="chart" data-percent="75" data-bar-color="#ff80ff" data-animate="4000">
+                            <div class="chart-content">
+                                <div class="percent"></div>
+                                <div class="chart-title">HTML/CSS/JavaScript/PHP</div>
+                            </div>
+                            <!-- chart-content --> 
+                        </div>
+                        <!-- chart -->
+                        <div class="chart" data-percent="80" data-bar-color="#ffff80" data-animate="4000">
+                            <div class="chart-content">
+                                <div class="percent"></div>
+                                <div class="chart-title">C/C++</div>
+                            </div>
+                            <!-- chart-content --> 
+                        </div>
+                        <!-- chart -->
+                        <div class="chart" data-percent="75" data-bar-color="#80ff80" data-animate="4000">
+                            <div class="chart-content">
+                                <div class="percent"></div>
+                                <div class="chart-title">MySQL</div>
+                            </div>
+                            <!-- chart-content --> 
+                        </div>
+                        <!-- chart -->
+                        <div class="clear"> </div>
+                    </div>
+                </div>
+            </section>
+            <script src="js/plugins.js"></script>
+            <script src="js/script.js"></script>
+        </div>
+        <!-- Gaming -->
+        <div class="group_1" id="group_1">
+            <div class="group_1-items">
+                <h3 class="heading">Games</h3>
+                <div class="wrap">
+                    <div id="owl-demo" class="owl-carousel">
+                        <div class="item">
+                            <div class="carousel">
+                                <div class="group_1_img">
+                                    <h3 class="ui core">Tic Tac Toe</h3>
+                                    <div class="clear"> </div>
+                                </div>
+                                <div class="group_1_text">
+                                    <p>A player can play a perfect game of tic-tac-toe (to win or at least, draw) if each time it is his turn to play, he chooses the first available move from the following list, as used in Newell and Simon's 1972 tic-tac-toe program. Win: If the player has two in a row, they can place a third to get three in a row.</p>
+                                    <div class="brows_button_4"> <a href="https://codepen.io/qinglianliu/pen/ebwQwx">Play</a> </div>
+                                </div>
+                                <div class="clear"> </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="carousel">
+                                <div class="group_1_img">
+                                    <h3 class="ui core">Gobang</h3>
+                                    <div class="clear"> </div>
+                                </div>
+                                <div class="group_1_text">
+                                    <p>Gomoku, also called Five in a Row, is an abstract strategy board game. It is traditionally played with Go pieces (black and white stones) on a Go board, using 15×15 of the 19×19 grid intersections.[1] Because pieces are not moved or removed from the board, Gomoku may also be played as a paper-and-pencil game. The game is known in several countries under different names.</p>
+                                    <div class="brows_button_4"> <a href='Gobang-game/index.html'>Play</a> </div>
+                                </div>
+                                <div class="clear"> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Owl Carousel Assets -->
+        <link href="css/owl.carousel.css" rel="stylesheet">
+        <!-- Owl Carousel Assets -->
+        <!-- Prettify --> 
+        <script src="js/owl.carousel.js"></script>
+        <script>
+            $(document).ready(function() {
+
+		      $("#owl-demo").owlCarousel({
+		        items : 1,
+		        lazyLoad : true,
+		        autoPlay : true,
+		        navigation : true,
+			    navigationText : ["",""],
+			    rewindNav :true,
+			    scrollPerPage :true,
+			    pagination : true,
+    			paginationNumbers: false,
+		      });
+
+		    });
+		    $(document).ready(function() {
+
+		      $("#owl-demo1").owlCarousel({
+		        items : 1,
+		        lazyLoad : true,
+		        autoPlay : true,
+		        navigation : true,
+			    navigationText : ["",""],
+			    rewindNav : true,
+			    scrollPerPage :true,
+			    pagination : false,
+    			paginationNumbers: false,
+		      });
+
+		    });
+		    $(document).ready(function() {
+
+		      $("#owl-demo2").owlCarousel({
+		        items : 1,
+		        lazyLoad : true,
+		        autoPlay : true,
+		        navigation : false,
+			    navigationText : ["",""],
+			    rewindNav : false,
+			    scrollPerPage :true,
+			    pagination : false,
+    			paginationNumbers: false,
+		      });
+
+		    });
+        </script>
+        
+        
+        <section id="gallery" class="parallax-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-offset-2 col-md-8 col-sm-12 text-center">
+                        <h1 class="heading">Hobbies</h1>
+                        <hr>
+                    </div>
+                    <div class="col-md-4 col-sm-4 wow fadeInUp">
+                        <a href="image/hotpot.jpg" ><img src="image/hotpot.jpg" alt="hotpot img"></a>
+                        <div>
+                            <h3 style=" color: #999;font-size: 20px;">Hot Pot</h3>
+                            <span><h4 style=" color: #998;font-size: 12px;">Meats / Vegetables / Seafood</h4></span>
+                        </div> 
+                        <a href="image/SweetandSourSpareribs.jpg" ><img src="image/SweetandSourSpareribs.jpg" alt="gallery img"></a>
+                        <div>
+                            <h3 style=" color: #999;font-size: 20px;">Sweet and Sour Spareribs</h3>
+                            <span><h4 style=" color: #998;font-size: 12px;">Spareribs / Salt / Cooking Wine / Soy Sauce / Vinegar / White Sugar</h4></span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 wow fadeInUp">
+                        <a href="image/Beefcake.jpg" ><img src="image/Beefcake.jpg" alt="gallery img"></a>
+                        <div>
+                            <h3 style=" color: #999;font-size: 20px;">Beef cake</h3>
+                            <span><h4 style=" color: #998;font-size: 12px;">Beef / Flour / Onlions</h4></span>
+                        </div> 
+                    </div>
+                    <div class="col-md-4 col-sm-4 wow fadeInUp">
+                        <a href="image/Beancurdwithstickyrice.jpg" ><img src="image/Beancurdwithstickyrice.jpg" alt="gallery img"></a>
+                        <div>
+                            <h3 style=" color: #999;font-size: 20px;">Beancurd with sticky rice</h3>
+                            <span><h4 style=" color: #998;font-size: 12px;">Sticky rice / Beef / Tofu / Flour / Egg</h4></span>
+                        </div> 
+                        <a href="image/StratiformCake.PNG" ><img src="image/StratiformCake.PNG" alt="gallery img"></a>
+                        <div>
+                            <h3 style=" color: #999;font-size: 20px;">Stratiform Cake</h3>
+                            <span><h4 style=" color: #998;font-size: 12px;">Cream / Flour / Milk / Egg / Sugar</h4></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <script src="js/nivo-lightbox.min.js"></script>
+        <script src="js/wow.min.js"></script>
+        <script type="text/javascript" src="js/move-top.js"></script>
+        <script type="text/javascript" src="js/easing.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+
+				var defaults = {
+		  			containerID: 'toTop', // fading element id
+					containerHoverID: 'toTopHover', // fading element hover id
+					scrollSpeed: 1200,
+					easingType: 'linear'
+		 		};
+
+
+				$().UItoTop({ easingType: 'easeOutQuart' });
+
+			});
+		</script>
+        <script type="text/javascript">
+            jQuery(document).ready(function($) {
+                $(".scroll").click(function(event){
+                    event.preventDefault();
+                    $('html,body').animate({scrollTop:$(this.hash).offset().top},1200);
+                });
+            });
+        </script>
+        <div> <a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a> </div>
+        <div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
+        
+    </body>
+</html>
